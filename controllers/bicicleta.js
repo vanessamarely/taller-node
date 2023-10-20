@@ -28,3 +28,24 @@ exports.delete = function (req, res) {
 
   res.redirect("/bicicletas");
 };
+
+exports.update_get = function (req, res) {
+  res.render("bicicletas/create");
+};
+
+exports.update_post = function (req, res) {
+  var bici = Bicicleta.findById(req.params.id);
+
+  bici.id = req.body.id;
+  bici.color = req.body.color;
+  bici.modelo = req.body.modelo;
+  bici.ubicacion = [req.body.lat, req.body.lng];
+
+  res.redirect("/bicicletas");
+};
+
+exports.update_get = function (req, res) {
+  var bici = Bicicleta.findById(req.params.id);
+
+  res.render("bicicletas/update", { bici });
+};
