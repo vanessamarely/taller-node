@@ -1,8 +1,7 @@
-const express = require("express");
+import { Router } from "express";
+import * as bicicletaController  from "../controllers/bicicleta";
 
-const router = express.Router();
-
-const bicicletaController = require("../controllers/bicicleta");
+const router = Router();
 
 router.get("/", bicicletaController.list);
 

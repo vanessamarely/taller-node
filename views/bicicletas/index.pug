@@ -4,8 +4,14 @@ block content
     a(href='http://localhost:3000') Home
     br
     br
-    a(href='/bicicletas/create') Nueva Bicicleta
-
+    a(href='/bicicleta/create') Nueva Bicicleta
+    br
+    br
+    script
+        | var species = !{JSON.stringify(bicis)};
+        | var fields = [];
+        | for (var key in species) fields.push(key)
+        | console.log(fields)
     table.table
         thead
             tr
@@ -23,10 +29,10 @@ block content
                     td=bici.modelo
                     td=bici.ubicacion
                     td
-                        a(href='bicicletas/'+bici.id+'/show') mostrar
+                        a(href='bicicleta/'+bici.id+'/show') mostrar
                     td
-                        a(href='bicicletas/'+bici.id+'/update') editar
+                        a(href='bicicleta/'+bici.id+'/update') editar
                     td
-                        form.inline(method='post' action='/bicicletas/'+bici.id+'/delete')
+                        form.inline(method='post' action='/bicicleta/'+bici.id+'/delete')
                         input(type='hidden' name='id' value=bici.id)
                         button.link-button(type='submit' name='submit_param' value='submit_value' class='.btn')='Eliminar'
